@@ -1,6 +1,6 @@
-def getInputs():
+ def getInputs():
     variables=[]
-    inputAmount=input("Enter all the variables in the equation: ").upper()
+    inputAmount=input("Please enter all the variables in the equation: ").upper()
     for i in range(len(inputAmount)):
         if inputAmount[i] in variables:
             continue
@@ -11,47 +11,26 @@ def getInputs():
 
 def truthTable():
     letters=getInputs()
-    if len(letters)==1:
-        string=''
-        for i in range(len(letters)):
-            string=string+letters[i]+'|'
-        print(string)
-        for a in range(0,2):
-            print(a)
+    size=len(letters)
+    dim_columns = 2**size
+    dim_rows = size
+    arr = [[0 for x in range(dim_columns)] for i in range(dim_rows)]
 
-    elif len(letters)==2:
-        string=''
-        for i in range(len(letters)):
-            string=string+letters[i]+'|'
-        print(string)
-        for a in range(0,2):
-            for b in range(0,2):
-                print(a,b)
+    for var in range(1,size+1):
+        for row in range(2**size):
+            rowSplit = 2**size/(2**var)
+            if (row//rowSplit)%2==1:
+                arr[var-1][row]=1
 
-    elif len(letters)==3:
-        string=''
-        for i in range(len(letters)):
-            string=string+letters[i]+'|'
-        print(string)
-        for a in range(0,2):
-            for b in range(0,2):
-                for c in range(0,2):
-                    print(a,b,c)
-
-    elif len(letters)==4:
-        string=''
-        for i in range(len(letters)):
-            string=string+letters[i]+'|'
-        print(string)
-        for a in range(0,2):
-            for b in range(0,2):
-                for c in range(0,2):
-                    for d in range(0,2):
-                        print(a,b,c,d)       
+    for j in range(len(letters)):
+        for items in arr[j]:
+            print(items)
 
     
-truthTable()
+        
+    
 
+truthTable()
     
 
 
