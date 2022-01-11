@@ -1,4 +1,4 @@
- def getInputs():
+def getInputs():
     variables=[]
     inputAmount=input("Please enter all the variables in the equation: ").upper()
     for i in range(len(inputAmount)):
